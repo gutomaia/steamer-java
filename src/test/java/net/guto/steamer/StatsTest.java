@@ -30,5 +30,6 @@ public class StatsTest extends TestCase {
 				achievement.getIconOpen());
 		assertEquals("CRASS MENAGERIE", achievement.getName());
 		assertEquals("ach_kill_every_uncommon_infected", achievement.getApiname());
+		assertEquals("Kill one of each Uncommon Infected.", achievement.getDescription());
 	}
 }

@@ -75,8 +75,10 @@ public class StatsClient {
 					achievement.iconOpen = node.getTextContent();
 				} else if ("name".equals(nodeName)) {
 					achievement.name = node.getTextContent();
-				}else if ("apiname".equals(nodeName)){
+				} else if ("apiname".equals(nodeName)) {
 					achievement.apiname = node.getTextContent();
+				} else if ("description".equals(nodeName)) {
+					achievement.description = node.getTextContent();
 				}
 			}
 		}

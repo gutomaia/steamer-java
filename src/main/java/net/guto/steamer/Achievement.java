@@ -6,6 +6,7 @@ public class Achievement {
 	public String iconOpen;
 	public String name;
 	public String apiname;
+	public String description;
 
 	public String getIconClosed() {
 		return iconClosed;
@@ -24,6 +25,6 @@ public class Achievement {
 	}
 
 	public String getDescription() {
-		return "Kill a Spitter before she is able to spit.";
+		return description;
 	}
 }

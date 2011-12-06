@@ -1,22 +1,29 @@
 package net.guto.steamer;
 
 import static javax.xml.xpath.XPathConstants.STRING;
+import static javax.xml.xpath.XPathConstants.NODESET;
 import static net.guto.steamer.Steamer.getDocument;
 import static net.guto.steamer.Steamer.getStringValue;
+import static net.guto.steamer.Steamer.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.xml.namespace.QName;
 
 import org.w3c.dom.Document;
+import org.w3c.dom.NodeList;
 
 public class StatsClient {
 
 	private static enum StatsField implements Field {
-		GAME_FRIENDLY_NAME("/playerstats/game/gameFriendlyName", STRING),
-		GAME_NAME("/playerstats/game/gameName", STRING),
-		GAME_LINK("/playerstats/game/gameLink", STRING),
-		GAME_ICON("/playerstats/game/gameIcon", STRING),
-		GAME_LOGO("/playerstats/game/gameLogo", STRING),
-		GAME_LOGO_SMALL("/playerstats/game/gameLogoSmall", STRING);
+		GAME_FRIENDLY_NAME("/playerstats/game/gameFriendlyName", STRING), GAME_NAME("/playerstats/game/gameName", STRING), GAME_LINK(
+				"/playerstats/game/gameLink",
+				STRING), GAME_ICON("/playerstats/game/gameIcon", STRING), GAME_LOGO("/playerstats/game/gameLogo", STRING), GAME_LOGO_SMALL(
+				"/playerstats/game/gameLogoSmall",
+				STRING), ACHIEVEMENTS("/playerstats/achievements/achievement", NODESET)
+
+		;
 
 		private final String xpath;
 		private final QName dataType;
@@ -45,5 +52,19 @@ public class StatsClient {
 		stats.gameLogo = getStringValue(StatsField.GAME_LOGO, document);
 		stats.gameLogoSmall = getStringValue(StatsField.GAME_LOGO_SMALL, document);
 		return stats;
+	}
+
+	List<Achievement> achievements;
+
+	public List<Achievement> getAchievements(String username, String game) {
+		if (achievements == null) {
+			achievements = new ArrayList<Achievement>();
+			Document document = getDocument("src/test/resources/" + username + "-" + game + ".xml");
+			NodeList xml = getNodeListValue(StatsField.ACHIEVEMENTS, document);
+			for (int i = 0; i < xml.getLength(); i++) {
+				achievements.add(new Achievement());
+			}
+		}
+		return achievements;
 	}
 }

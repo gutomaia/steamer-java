@@ -32,12 +32,12 @@ public class TF2StatsTest extends TestCase {
 
 	public void testTF2Logo() {
 		assertEquals("http://media.steampowered.com/steamcommunity/public/images/apps/440/07385eb55b5ba974aebbe74d3c99626bda7920b8.jpg",
-				stats.getLogo());
+				stats.getGameLogo());
 	}
 
 	public void testTF2LogoSmall() {
 		assertEquals(
 				"http://media.steampowered.com/steamcommunity/public/images/apps/440/07385eb55b5ba974aebbe74d3c99626bda7920b8_thumb.jpg",
-				stats.getLogoSmall());
+				stats.getGameLogoSmall());
 	}
 }

@@ -33,12 +33,12 @@ public class Portal2StatsTest extends TestCase {
 
 	public void testPortal2Logo() {
 		assertEquals("http://media.steampowered.com/steamcommunity/public/images/apps/620/d2a1119ddc202fab81d9b87048f495cbd6377502.jpg",
-				stats.getLogo());
+				stats.getGameLogo());
 	}
 
 	public void testPortal2LogoSmall() {
 		assertEquals(
 				"http://media.steampowered.com/steamcommunity/public/images/apps/620/d2a1119ddc202fab81d9b87048f495cbd6377502_thumb.jpg",
-				stats.getLogoSmall());
+				stats.getGameLogoSmall());
 	}
 }

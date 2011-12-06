@@ -33,12 +33,12 @@ public class L4D2StatsTest extends TestCase {
 
 	public void testL4D2Logo() {
 		assertEquals("http://media.steampowered.com/steamcommunity/public/images/apps/550/205863cc21e751a576d6fff851984b3170684142.jpg",
-				stats.getLogo());
+				stats.getGameLogo());
 	}
 
 	public void testL4D2LogoSmall() {
 		assertEquals(
 				"http://media.steampowered.com/steamcommunity/public/images/apps/550/205863cc21e751a576d6fff851984b3170684142_thumb.jpg",
-				stats.getLogoSmall());
+				stats.getGameLogoSmall());
 	}
 }

@@ -6,8 +6,8 @@ public class Stats {
 	String gameName;
 	String gameLink;
 	String gameIcon;
-	String logo;
-	String logoSmall;
+	String gameLogo;
+	String gameLogoSmall;
 
 	public String getGameFriendlyName() {
 		return gameFriendlyName;
@@ -25,11 +25,11 @@ public class Stats {
 		return gameIcon;
 	}
 
-	public String getLogo() {
-		return logo;
+	public String getGameLogo() {
+		return gameLogo;
 	}
 
-	public String getLogoSmall() {
-		return logoSmall;
+	public String getGameLogoSmall() {
+		return gameLogoSmall;
 	}
 }

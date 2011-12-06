@@ -14,7 +14,7 @@ import org.w3c.dom.Document;
 
 public class SteamUser {
 
-	private enum UserField implements Field {
+	private static enum UserField implements Field {
 		STEAM_ID64("/profile/steamID64", STRING),
 		STEAM_ID("/profile/steamID", STRING),
 		AVATAR_ICON("/profile/avatarIcon", STRING),

@@ -33,11 +33,11 @@ public class StatsTest extends TestCase {
 		assertEquals("http://store.steampowered.com/app/550", stats.getGameLink());
 		assertEquals("http://media.steampowered.com/steamcommunity/public/images/apps/550/7d5a243f9500d2f8467312822f8af2a2928777ed.jpg",
 				stats.getGameIcon());
-		// assertEquals("http://media.steampowered.com/steamcommunity/public/images/apps/550/205863cc21e751a576d6fff851984b3170684142.jpg",
-		// stats.getLogo());
-		// assertEquals(
-		// "http://media.steampowered.com/steamcommunity/public/images/apps/550/205863cc21e751a576d6fff851984b3170684142_thumb.jpg",
-		// stats.getLogoSmall());
+		assertEquals("http://media.steampowered.com/steamcommunity/public/images/apps/550/205863cc21e751a576d6fff851984b3170684142.jpg",
+				stats.getLogo());
+		assertEquals(
+				"http://media.steampowered.com/steamcommunity/public/images/apps/550/205863cc21e751a576d6fff851984b3170684142_thumb.jpg",
+				stats.getLogoSmall());
 
 	}
 }

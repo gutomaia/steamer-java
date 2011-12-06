@@ -8,6 +8,8 @@ public class SteamGame {
 	public String storeLink;
 	public String statsLink;
 	public String globalStatsLink;
+	public float hoursLast2Weeks;
+	public float hoursOnRecord;
 
 	public int getAppID() {
 		return appID;
@@ -26,11 +28,11 @@ public class SteamGame {
 	}
 
 	public float getHoursLast2Weeks() {
-		return 13.5f;
+		return hoursLast2Weeks;
 	}
 
 	public float getHoursOnRecord() {
-		return 589.7f;
+		return hoursOnRecord;
 	}
 
 	public String getStatsLink() {

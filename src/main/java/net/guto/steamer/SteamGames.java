@@ -64,6 +64,10 @@ public class SteamGames {
 				game.logo = node.getTextContent();
 			} else if ("storeLink".equals(nodeName)) {
 				game.storeLink = node.getTextContent();
+			} else if ("hoursLast2Weeks".equals(nodeName)) {
+				game.hoursLast2Weeks = Float.parseFloat(node.getTextContent());
+			} else if ("hoursOnRecord".equals(nodeName)) {
+				game.hoursOnRecord = Float.parseFloat(node.getTextContent());
 			} else if ("statsLink".equals(nodeName)) {
 				game.statsLink = node.getTextContent();
 			} else if ("globalStatsLink".equals(nodeName)) {

@@ -68,6 +68,10 @@ public class SteamTest extends TestCase {
 		assertEquals("http://media.steampowered.com/steamcommunity/public/images/apps/35010/172e0928b845c18491f1a8fee0dafe7a146ac129.jpg",
 				game.getLogo());
 		assertEquals("http://store.steampowered.com/app/35010", game.getStoreLink());
+		assertEquals(10.8f, game.getHoursLast2Weeks(), 0f);
+		assertEquals("10.8", Float.toString(game.getHoursLast2Weeks()));
+		assertEquals(17.5f, game.getHoursOnRecord(), 0f);
+		assertEquals("17.5", Float.toString(game.getHoursOnRecord()));
 		assertNull(game.getStatsLink());
 		assertNull(game.getGlobalStatsLink());
 		
@@ -77,6 +81,10 @@ public class SteamTest extends TestCase {
 		assertEquals("http://media.steampowered.com/steamcommunity/public/images/apps/21660/6620b31699a355290d82dc18c9c73319ff0e2ac5.jpg",
 				game.getLogo());
 		assertEquals("http://store.steampowered.com/app/21660", game.getStoreLink());
+		assertEquals(0.7f, game.getHoursLast2Weeks(), 0f);
+		assertEquals("0.7", Float.toString(game.getHoursLast2Weeks()));
+		assertEquals(25.7f, game.getHoursOnRecord(), 0f);
+		assertEquals("25.7", Float.toString(game.getHoursOnRecord()));
 		assertNull(game.getStatsLink());
 		assertNull(game.getGlobalStatsLink());
 		
@@ -86,8 +94,11 @@ public class SteamTest extends TestCase {
 		assertEquals("http://media.steampowered.com/steamcommunity/public/images/apps/49400/c108ccd1273bf897ba57a080f4a86584ace2dfda.jpg",
 				game.getLogo());
 		assertEquals("http://store.steampowered.com/app/49400", game.getStoreLink());
+		assertEquals(0.5f, game.getHoursLast2Weeks(), 0f);
+		assertEquals("0.5", Float.toString(game.getHoursLast2Weeks()));
+		assertEquals(9.6f, game.getHoursOnRecord(), 0f);
+		assertEquals("9.6", Float.toString(game.getHoursOnRecord()));
 		assertEquals("http://steamcommunity.com/id/gutomaia/stats/Planeswalkers", game.getStatsLink());
 		assertEquals("http://steamcommunity.com/stats/Planeswalkers/achievements/", game.getGlobalStatsLink());
-
 	}
 }

@@ -6,6 +6,8 @@ public class SteamGame {
 	public String name;
 	public String logo;
 	public String storeLink;
+	public String statsLink;
+	public String globalStatsLink;
 
 	public int getAppID() {
 		return appID;
@@ -32,10 +34,10 @@ public class SteamGame {
 	}
 
 	public String getStatsLink() {
-		return "http://steamcommunity.com/id/gutomaia/stats/TF2";
+		return statsLink;
 	}
 
 	public String getGlobalStatsLink() {
-		return "http://steamcommunity.com/stats/TF2/achievements/";
+		return globalStatsLink;
 	}
 }

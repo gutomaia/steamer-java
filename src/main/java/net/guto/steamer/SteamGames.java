@@ -58,12 +58,16 @@ public class SteamGames {
 				games.add(game);
 			} else if ("appID".equals(nodeName)) {
 				game.appID = Integer.parseInt(node.getTextContent());
-			} else if ("name".equals(nodeName)){
+			} else if ("name".equals(nodeName)) {
 				game.name = node.getTextContent();
-			} else if ("logo".equals(nodeName)){
+			} else if ("logo".equals(nodeName)) {
 				game.logo = node.getTextContent();
-			} else if ("storeLink".equals(nodeName)){
+			} else if ("storeLink".equals(nodeName)) {
 				game.storeLink = node.getTextContent();
+			} else if ("statsLink".equals(nodeName)) {
+				game.statsLink = node.getTextContent();
+			} else if ("globalStatsLink".equals(nodeName)) {
+				game.globalStatsLink = node.getTextContent();
 			}
 		}
 	}

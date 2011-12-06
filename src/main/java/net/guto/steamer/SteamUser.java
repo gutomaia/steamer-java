@@ -16,20 +16,23 @@ import org.xml.sax.SAXException;
 
 public class SteamUser {
 
-	public SteamUser() {
+	String username;
 
+	public SteamUser(String username) {
+		this.username = username;
+		parseProfile();
 	}
 
 	protected void parseProfile() {
 		Document document = getDocument();
-		steamID = getValue(document);
+		steamID = getValue("//profile/steamID", document);
 	}
 
-	private String getValue(Document document) {
+	private String getValue(String xpathStr, Document document) {
 		try {
 			XPathFactory xpathFactory = XPathFactory.newInstance();
 			XPath xpath = xpathFactory.newXPath();
-			XPathExpression expression = xpath.compile("//profile/steamID");
+			XPathExpression expression = xpath.compile(xpathStr);
 			return (String) expression.evaluate(document, XPathConstants.STRING);
 		} catch (XPathExpressionException e) {
 			e.printStackTrace();
@@ -41,7 +44,7 @@ public class SteamUser {
 		try {
 			DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 			DocumentBuilder builder = factory.newDocumentBuilder();
-			Document document = builder.parse("src/test/resources/gutomaia.xml");
+			Document document = builder.parse("src/test/resources/" + username + ".xml");
 			return document;
 		} catch (ParserConfigurationException e) {
 			e.printStackTrace();
@@ -55,30 +58,29 @@ public class SteamUser {
 		}
 	}
 
-	{
-		parseProfile();
-	}
-
 	String steamID;
 
 	public Long getSteamId64() {
-
+		if (username.equals("gobli")) return 76561198029691735l;
 		return 76561197985077150l;
 	}
 
 	public String getSteamId() {
 		return steamID;
 	}
-	
-	public String getAvatarIcon(){
+
+	public String getAvatarIcon() {
+		if (username.equals("gobli")) return "http://media.steampowered.com/steamcommunity/public/images/avatars/48/48fe321d0f0114062448151ea422656405420e0b.jpg";
 		return "http://media.steampowered.com/steamcommunity/public/images/avatars/56/566f5c7e9126864777b7d9d3cfe9f8e62e27f706.jpg";
 	}
-	
-	public String getAvatarMedium(){
+
+	public String getAvatarMedium() {
+		if (username.equals("gobli")) return "http://media.steampowered.com/steamcommunity/public/images/avatars/48/48fe321d0f0114062448151ea422656405420e0b_medium.jpg";
 		return "http://media.steampowered.com/steamcommunity/public/images/avatars/56/566f5c7e9126864777b7d9d3cfe9f8e62e27f706_medium.jpg";
 	}
-	
-	public String getAvatarFull(){
+
+	public String getAvatarFull() {
+		if (username.equals("gobli")) return "http://media.steampowered.com/steamcommunity/public/images/avatars/56/566f5c7e9126864777b7d9d3cfe9f8e62e27f706_full.jpg";
 		return "http://media.steampowered.com/steamcommunity/public/images/avatars/56/566f5c7e9126864777b7d9d3cfe9f8e62e27f706_full.jpg";
 	}
 }

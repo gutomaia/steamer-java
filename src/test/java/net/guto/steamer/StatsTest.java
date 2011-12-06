@@ -31,5 +31,16 @@ public class StatsTest extends TestCase {
 		assertEquals("CRASS MENAGERIE", achievement.getName());
 		assertEquals("ach_kill_every_uncommon_infected", achievement.getApiname());
 		assertEquals("Kill one of each Uncommon Infected.", achievement.getDescription());
+		
+		achievement = achievements.get(2);
+
+		assertEquals("http://media.steampowered.com/steamcommunity/public/images/apps/550/b65a6518c0680448e996e2190d1ed6b00ad14935.jpg",
+				achievement.getIconClosed());
+		assertEquals("http://media.steampowered.com/steamcommunity/public/images/apps/550/95bb3011848b129b4b7483017a970700a0a22bd1.jpg",
+				achievement.getIconOpen());
+		assertEquals("A RIDE DENIED", achievement.getName());
+		assertEquals("ach_save_player_from_jockey_fast", achievement.getApiname());
+		assertEquals("Kill a Jockey within 2 seconds of it jumping on a Survivor.", achievement.getDescription());
+
 	}
 }

@@ -67,6 +67,7 @@ public class SteamTest extends TestCase {
 		assertEquals("Batman: Arkham Asylum", game.getName());
 		assertEquals("http://media.steampowered.com/steamcommunity/public/images/apps/35010/172e0928b845c18491f1a8fee0dafe7a146ac129.jpg",
 				game.getLogo());
+		assertEquals("http://store.steampowered.com/app/35010", game.getStoreLink());
 
 	}
 }

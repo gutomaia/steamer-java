@@ -62,6 +62,8 @@ public class SteamGames {
 				game.name = node.getTextContent();
 			} else if ("logo".equals(nodeName)){
 				game.logo = node.getTextContent();
+			} else if ("storeLink".equals(nodeName)){
+				game.storeLink = node.getTextContent();
 			}
 		}
 	}

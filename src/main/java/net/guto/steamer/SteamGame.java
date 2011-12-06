@@ -5,6 +5,7 @@ public class SteamGame {
 	public int appID;
 	public String name;
 	public String logo;
+	public String storeLink;
 
 	public int getAppID() {
 		return appID;
@@ -19,7 +20,7 @@ public class SteamGame {
 	}
 
 	public String getStoreLink() {
-		return "http://store.steampowered.com/app/440";
+		return storeLink;
 	}
 
 	public float getHoursLast2Weeks() {

@@ -15,13 +15,13 @@ import org.w3c.dom.Document;
 public class SteamUser {
 
 	private enum UserField implements Field {
-		STEAM_ID64("//profile/steamID64", STRING),
-		STEAM_ID("//profile/steamID", STRING),
-		AVATAR_ICON("//profile/avatarIcon", STRING),
-		AVATAR_MEDIUM("//profile/avatarMedium", STRING),
-		AVATAR_FULL("//profile/avatarFull", STRING),
-		CUSTOM_URL("//profile/customURL", STRING),
-		LOCATION("//profile/location", STRING);
+		STEAM_ID64("/profile/steamID64", STRING),
+		STEAM_ID("/profile/steamID", STRING),
+		AVATAR_ICON("/profile/avatarIcon", STRING),
+		AVATAR_MEDIUM("/profile/avatarMedium", STRING),
+		AVATAR_FULL("/profile/avatarFull", STRING),
+		CUSTOM_URL("/profile/customURL", STRING),
+		LOCATION("/profile/location", STRING);
 
 		private final String xpath;
 		private final QName dataType;

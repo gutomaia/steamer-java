@@ -69,5 +69,16 @@ public class SteamUser {
 	public String getSteamId() {
 		return steamID;
 	}
-
+	
+	public String getAvatarIcon(){
+		return "http://media.steampowered.com/steamcommunity/public/images/avatars/56/566f5c7e9126864777b7d9d3cfe9f8e62e27f706.jpg";
+	}
+	
+	public String getAvatarMedium(){
+		return "http://media.steampowered.com/steamcommunity/public/images/avatars/56/566f5c7e9126864777b7d9d3cfe9f8e62e27f706_medium.jpg";
+	}
+	
+	public String getAvatarFull(){
+		return "http://media.steampowered.com/steamcommunity/public/images/avatars/56/566f5c7e9126864777b7d9d3cfe9f8e62e27f706_full.jpg";
+	}
 }

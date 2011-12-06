@@ -4,6 +4,8 @@ public class Stats {
 
 	public String gameFriendlyName;
 	public String gameName;
+	public String gameLink;
+	public String gameIcon;
 
 	public String getGameFriendlyName() {
 		return gameFriendlyName;
@@ -14,11 +16,11 @@ public class Stats {
 	}
 
 	public String getGameLink() {
-		return "http://store.steampowered.com/app/440";
+		return gameLink;
 	}
 
 	public String getGameIcon() {
-		return "http://media.steampowered.com/steamcommunity/public/images/apps/440/e3f595a92552da3d664ad00277fad2107345f743.jpg";
+		return gameIcon;
 	}
 
 	public String getLogo() {

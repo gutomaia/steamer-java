@@ -1,5 +1,6 @@
 package net.guto.steamer;
 
+import static javax.xml.xpath.XPathConstants.NODESET;
 import static javax.xml.xpath.XPathConstants.STRING;
 
 import java.io.IOException;
@@ -56,15 +57,15 @@ public class SteamUser {
 		location = getStringValue(Field.LOCATION, document);
 	}
 
-	private Long getLongValue(Field field, Document document) {
+	private static Long getLongValue(final Field field, final Document document) {
 		return Long.parseLong((String) getValue(field, document));
 	}
 
-	private String getStringValue(Field field, Document document) {
+	private static String getStringValue(final Field field, final Document document) {
 		return (String) getValue(field, document);
 	}
 
-	private Object getValue(Field field, Document document) {
+	private static Object getValue(final Field field, final Document document) {
 		try {
 			XPathFactory xpathFactory = XPathFactory.newInstance();
 			XPath xpath = xpathFactory.newXPath();

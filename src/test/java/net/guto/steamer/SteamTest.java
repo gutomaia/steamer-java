@@ -36,10 +36,8 @@ public class SteamTest extends TestCase {
 	
 	public void testFetchGutoMaiaGames(){
 		Steamer steamer = new Steamer();
-		SteamUser gutomaia = steamer.getUser("gutomaia");
-		assertNotNull(gutomaia);
-		List<SteamGame> games = gutomaia.getGames();
+		List<SteamGame> games = steamer.getGames("gutomaia");
 		assertNotNull(games);
+		//assertTrue(games.size() > 0);
 	}
-
 }

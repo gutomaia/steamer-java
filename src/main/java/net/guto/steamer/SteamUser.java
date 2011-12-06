@@ -29,6 +29,7 @@ public class SteamUser {
 		avatarIcon = getValue("//profile/avatarIcon", document);
 		avatarMedium = getValue("//profile/avatarMedium", document);
 		avatarFull = getValue("//profile/avatarFull", document);
+		customUrl = getValue("//profile/customURL", document);
 	}
 
 	private String getValue(String xpathStr, Document document) {
@@ -65,6 +66,7 @@ public class SteamUser {
 	String avatarIcon;
 	String avatarMedium;
 	String avatarFull;
+	String customUrl;
 
 	public Long getSteamId64() {
 		if (username.equals("gobli")) return 76561198029691735l;
@@ -86,4 +88,9 @@ public class SteamUser {
 	public String getAvatarFull() {
 		return avatarFull;
 	}
+
+	public String getCustomUrl() {
+		return customUrl;
+	}
+
 }

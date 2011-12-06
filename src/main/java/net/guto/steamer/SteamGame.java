@@ -4,6 +4,7 @@ public class SteamGame {
 
 	public int appID;
 	public String name;
+	public String logo;
 
 	public int getAppID() {
 		return appID;
@@ -14,7 +15,7 @@ public class SteamGame {
 	}
 
 	public String getLogo() {
-		return "http://media.steampowered.com/steamcommunity/public/images/apps/440/07385eb55b5ba974aebbe74d3c99626bda7920b8.jpg";
+		return logo;
 	}
 
 	public String getStoreLink() {

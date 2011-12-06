@@ -60,6 +60,8 @@ public class SteamGames {
 				game.appID = Integer.parseInt(node.getTextContent());
 			} else if ("name".equals(nodeName)){
 				game.name = node.getTextContent();
+			} else if ("logo".equals(nodeName)){
+				game.logo = node.getTextContent();
 			}
 		}
 	}

@@ -61,9 +61,12 @@ public class SteamTest extends TestCase {
 		assertEquals("589.7", Float.toString(game.getHoursOnRecord()));
 		assertEquals("http://steamcommunity.com/id/gutomaia/stats/TF2", game.getStatsLink());
 		assertEquals("http://steamcommunity.com/stats/TF2/achievements/", game.getGlobalStatsLink());
-		
+
 		game = games.get(1);
 		assertEquals(35010, game.getAppID());
 		assertEquals("Batman: Arkham Asylum", game.getName());
+		assertEquals("http://media.steampowered.com/steamcommunity/public/images/apps/35010/172e0928b845c18491f1a8fee0dafe7a146ac129.jpg",
+				game.getLogo());
+
 	}
 }

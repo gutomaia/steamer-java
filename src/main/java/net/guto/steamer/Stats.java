@@ -2,12 +2,12 @@ package net.guto.steamer;
 
 public class Stats {
 
-	public String gameFriendlyName;
-	public String gameName;
-	public String gameLink;
-	public String gameIcon;
-	public String logo;
-	public String logoSmall;
+	String gameFriendlyName;
+	String gameName;
+	String gameLink;
+	String gameIcon;
+	String logo;
+	String logoSmall;
 
 	public String getGameFriendlyName() {
 		return gameFriendlyName;

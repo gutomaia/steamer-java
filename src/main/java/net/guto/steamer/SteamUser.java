@@ -16,6 +16,18 @@ import org.xml.sax.SAXException;
 
 public class SteamUser {
 
+	private enum Field {
+		STEAM_ID("//profile/steamID"), AVATAR_ICON("//profile/avatarIcon"), AVATAR_MEDIUM("//profile/avatarMedium"), AVATAR_FULL(
+				"//profile/avatarFull"), CUSTOM_URL("//profile/customURL");
+
+		public final String xpath;
+
+		private Field(String xpath) {
+			this.xpath = xpath;
+		}
+
+	}
+
 	String username;
 
 	public SteamUser(String username) {
@@ -25,18 +37,18 @@ public class SteamUser {
 
 	protected void parseProfile() {
 		Document document = getDocument();
-		steamID = getValue("//profile/steamID", document);
-		avatarIcon = getValue("//profile/avatarIcon", document);
-		avatarMedium = getValue("//profile/avatarMedium", document);
-		avatarFull = getValue("//profile/avatarFull", document);
-		customUrl = getValue("//profile/customURL", document);
+		steamID = getValue(Field.STEAM_ID, document);
+		avatarIcon = getValue(Field.AVATAR_ICON, document);
+		avatarMedium = getValue(Field.AVATAR_MEDIUM, document);
+		avatarFull = getValue(Field.AVATAR_FULL, document);
+		customUrl = getValue(Field.CUSTOM_URL, document);
 	}
 
-	private String getValue(String xpathStr, Document document) {
+	private String getValue(Field field, Document document) {
 		try {
 			XPathFactory xpathFactory = XPathFactory.newInstance();
 			XPath xpath = xpathFactory.newXPath();
-			XPathExpression expression = xpath.compile(xpathStr);
+			XPathExpression expression = xpath.compile(field.xpath);
 			return (String) expression.evaluate(document, XPathConstants.STRING);
 		} catch (XPathExpressionException e) {
 			e.printStackTrace();

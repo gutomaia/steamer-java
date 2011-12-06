@@ -22,13 +22,8 @@ public class SteamUser {
 
 	protected void parseProfile() {
 		try {
-			DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-			DocumentBuilder builder = factory.newDocumentBuilder();
-			Document document = builder.parse("src/test/resources/gutomaia.xml");
-			XPathFactory xpathFactory = XPathFactory.newInstance();
-			XPath xpath = xpathFactory.newXPath();
-			XPathExpression expression = xpath.compile("//profile/steamID");
-			steamID = (String) expression.evaluate(document, XPathConstants.STRING);
+			Document document = getDocument();
+			steamID = getValue(document);
 		} catch (ParserConfigurationException e) {
 			e.printStackTrace();
 		} catch (SAXException e) {
@@ -38,6 +33,20 @@ public class SteamUser {
 		} catch (XPathExpressionException e) {
 			e.printStackTrace();
 		}
+	}
+
+	private String getValue(Document document) throws XPathExpressionException {
+		XPathFactory xpathFactory = XPathFactory.newInstance();
+		XPath xpath = xpathFactory.newXPath();
+		XPathExpression expression = xpath.compile("//profile/steamID");
+		return (String) expression.evaluate(document, XPathConstants.STRING);
+	}
+
+	private Document getDocument() throws ParserConfigurationException, SAXException, IOException {
+		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+		DocumentBuilder builder = factory.newDocumentBuilder();
+		Document document = builder.parse("src/test/resources/gutomaia.xml");
+		return document;
 	}
 
 	{

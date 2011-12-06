@@ -11,7 +11,8 @@ import org.w3c.dom.Document;
 public class StatsClient {
 
 	private static enum StatsField implements Field {
-		GAME_FRIENDLY_NAME("/playerstats/game/gameFriendlyName", STRING);
+		GAME_FRIENDLY_NAME("/playerstats/game/gameFriendlyName", STRING),
+		GAME_NAME("/playerstats/game/gameName", STRING);
 
 		private final String xpath;
 		private final QName dataType;
@@ -33,19 +34,16 @@ public class StatsClient {
 	public Stats getStats(String username, String game) {
 		Stats stats = new Stats();
 		if (game.equals("portal2")) {
-			stats.gameName = "Portal 2";
 			stats.gameLink = "http://store.steampowered.com/app/620";
 			stats.gameIcon = "http://media.steampowered.com/steamcommunity/public/images/apps/620/2e478fc6874d06ae5baf0d147f6f21203291aa02.jpg";
 			stats.logo = "http://media.steampowered.com/steamcommunity/public/images/apps/620/d2a1119ddc202fab81d9b87048f495cbd6377502.jpg";
 			stats.logoSmall = "http://media.steampowered.com/steamcommunity/public/images/apps/620/d2a1119ddc202fab81d9b87048f495cbd6377502_thumb.jpg";
 		} else if (game.equals("tf2")) {
-			stats.gameName = "Team Fortress 2";
 			stats.gameLink = "http://store.steampowered.com/app/440";
 			stats.gameIcon = "http://media.steampowered.com/steamcommunity/public/images/apps/440/e3f595a92552da3d664ad00277fad2107345f743.jpg";
 			stats.logo = "http://media.steampowered.com/steamcommunity/public/images/apps/440/07385eb55b5ba974aebbe74d3c99626bda7920b8.jpg";
 			stats.logoSmall = "http://media.steampowered.com/steamcommunity/public/images/apps/440/07385eb55b5ba974aebbe74d3c99626bda7920b8_thumb.jpg";
 		} else if (game.equals("l4d2")) {
-			stats.gameName = "Left 4 Dead 2";
 			stats.gameLink = "http://store.steampowered.com/app/550";
 			stats.gameIcon = "http://media.steampowered.com/steamcommunity/public/images/apps/550/7d5a243f9500d2f8467312822f8af2a2928777ed.jpg";
 			stats.logo = "http://media.steampowered.com/steamcommunity/public/images/apps/550/205863cc21e751a576d6fff851984b3170684142.jpg";
@@ -53,6 +51,7 @@ public class StatsClient {
 		}
 		Document document = getDocument("src/test/resources/" + username + "-" + game + ".xml");
 		stats.gameFriendlyName = getStringValue(StatsField.GAME_FRIENDLY_NAME, document);
+		stats.gameName = getStringValue(StatsField.GAME_NAME, document);
 		return stats;
 	}
 }

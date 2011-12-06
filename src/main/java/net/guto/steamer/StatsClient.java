@@ -69,12 +69,14 @@ public class StatsClient {
 				if ("achievement".equals(nodeName)) {
 					achievement = new Achievement();
 					achievements.add(achievement);
-				}else if ("iconClosed".equals(nodeName)){
+				} else if ("iconClosed".equals(nodeName)) {
 					achievement.iconClosed = node.getTextContent();
-				}else if ("iconOpen".equals(nodeName)){
+				} else if ("iconOpen".equals(nodeName)) {
 					achievement.iconOpen = node.getTextContent();
-				}else if ("name".equals(nodeName)){
+				} else if ("name".equals(nodeName)) {
 					achievement.name = node.getTextContent();
+				}else if ("apiname".equals(nodeName)){
+					achievement.apiname = node.getTextContent();
 				}
 			}
 		}

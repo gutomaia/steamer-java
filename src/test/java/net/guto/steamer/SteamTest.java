@@ -1,9 +1,11 @@
 package net.guto.steamer;
 
+import java.util.List;
+
 import junit.framework.TestCase;
 
 public class SteamTest extends TestCase {
-
+	
 	public void testFetchGutoMaiaData() {
 		Steamer steamer = new Steamer();
 		SteamUser gutomaia = steamer.getUser("gutomaia");
@@ -15,6 +17,7 @@ public class SteamTest extends TestCase {
 		assertEquals("http://media.steampowered.com/steamcommunity/public/images/avatars/56/566f5c7e9126864777b7d9d3cfe9f8e62e27f706_medium.jpg", gutomaia.getAvatarMedium());
 		assertEquals("http://media.steampowered.com/steamcommunity/public/images/avatars/56/566f5c7e9126864777b7d9d3cfe9f8e62e27f706_full.jpg", gutomaia.getAvatarFull());
 		assertEquals("gutomaia", gutomaia.getCustomUrl());
+		assertEquals("Salvador, Bahia, Brazil", gutomaia.getLocation());
 	}
 
 	public void testFetchGobliData() {
@@ -28,6 +31,15 @@ public class SteamTest extends TestCase {
 		assertEquals("http://media.steampowered.com/steamcommunity/public/images/avatars/48/48fe321d0f0114062448151ea422656405420e0b_medium.jpg", gobli.getAvatarMedium());
 		assertEquals("http://media.steampowered.com/steamcommunity/public/images/avatars/48/48fe321d0f0114062448151ea422656405420e0b_full.jpg", gobli.getAvatarFull());
 		assertEquals("gobli", gobli.getCustomUrl());
+		assertEquals("", gobli.getLocation());
+	}
+	
+	public void testFetchGutoMaiaGames(){
+		Steamer steamer = new Steamer();
+		SteamUser gutomaia = steamer.getUser("gutomaia");
+		assertNotNull(gutomaia);
+		List<SteamGame> games = gutomaia.getGames();
+		assertNotNull(games);
 	}
 
 }

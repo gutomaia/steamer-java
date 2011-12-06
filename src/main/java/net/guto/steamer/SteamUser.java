@@ -3,6 +3,8 @@ package net.guto.steamer;
 import static javax.xml.xpath.XPathConstants.STRING;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.xml.namespace.QName;
 import javax.xml.parsers.DocumentBuilder;
@@ -24,7 +26,8 @@ public class SteamUser {
 		AVATAR_ICON("//profile/avatarIcon", STRING),
 		AVATAR_MEDIUM("//profile/avatarMedium", STRING),
 		AVATAR_FULL("//profile/avatarFull", STRING),
-		CUSTOM_URL("//profile/customURL", STRING);
+		CUSTOM_URL("//profile/customURL", STRING),
+		LOCATION("//profile/location", STRING);
 
 		public final String xpath;
 		public final QName dataType;
@@ -50,9 +53,10 @@ public class SteamUser {
 		avatarMedium = getStringValue(Field.AVATAR_MEDIUM, document);
 		avatarFull = getStringValue(Field.AVATAR_FULL, document);
 		customUrl = getStringValue(Field.CUSTOM_URL, document);
+		location = getStringValue(Field.LOCATION, document);
 	}
-	
-	private Long getLongValue(Field field, Document document){
+
+	private Long getLongValue(Field field, Document document) {
 		return Long.parseLong((String) getValue(field, document));
 	}
 
@@ -96,6 +100,7 @@ public class SteamUser {
 	String avatarMedium;
 	String avatarFull;
 	String customUrl;
+	String location;
 
 	public Long getSteamId64() {
 		return steamId64;
@@ -121,4 +126,14 @@ public class SteamUser {
 		return customUrl;
 	}
 
+	public String getLocation() {
+		return location;
+	}
+
+	List<SteamGame> games;
+
+	public List<SteamGame> getGames() {
+		if (games == null) games = new ArrayList<SteamGame>();
+		return games;
+	}
 }

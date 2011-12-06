@@ -71,6 +71,23 @@ public class SteamTest extends TestCase {
 		assertNull(game.getStatsLink());
 		assertNull(game.getGlobalStatsLink());
 		
+		game = games.get(2);
+		assertEquals(21660, game.getAppID());
+		assertEquals("Street Fighter IV", game.getName());
+		assertEquals("http://media.steampowered.com/steamcommunity/public/images/apps/21660/6620b31699a355290d82dc18c9c73319ff0e2ac5.jpg",
+				game.getLogo());
+		assertEquals("http://store.steampowered.com/app/21660", game.getStoreLink());
+		assertNull(game.getStatsLink());
+		assertNull(game.getGlobalStatsLink());
+		
+		game = games.get(3);
+		assertEquals(49400, game.getAppID());
+		assertEquals("Magic: The Gathering - Duels of the Planeswalkers", game.getName());
+		assertEquals("http://media.steampowered.com/steamcommunity/public/images/apps/49400/c108ccd1273bf897ba57a080f4a86584ace2dfda.jpg",
+				game.getLogo());
+		assertEquals("http://store.steampowered.com/app/49400", game.getStoreLink());
+		assertEquals("http://steamcommunity.com/id/gutomaia/stats/Planeswalkers", game.getStatsLink());
+		assertEquals("http://steamcommunity.com/stats/Planeswalkers/achievements/", game.getGlobalStatsLink());
 
 	}
 }

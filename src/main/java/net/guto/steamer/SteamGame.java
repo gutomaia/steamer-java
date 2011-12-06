@@ -3,13 +3,14 @@ package net.guto.steamer;
 public class SteamGame {
 
 	public int appID;
+	public String name;
 
 	public int getAppID() {
 		return appID;
 	}
 
 	public String getName() {
-		return "Team Fortress 2";
+		return name;
 	}
 
 	public String getLogo() {

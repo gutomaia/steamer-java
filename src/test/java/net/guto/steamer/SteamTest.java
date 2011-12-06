@@ -64,5 +64,6 @@ public class SteamTest extends TestCase {
 		
 		game = games.get(1);
 		assertEquals(35010, game.getAppID());
+		assertEquals("Batman: Arkham Asylum", game.getName());
 	}
 }

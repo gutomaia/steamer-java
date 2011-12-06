@@ -1,27 +1,20 @@
 package net.guto.steamer;
 
-import static javax.xml.xpath.XPathConstants.NODESET;
 import static javax.xml.xpath.XPathConstants.STRING;
+import static net.guto.steamer.Steamer.getDocument;
+import static net.guto.steamer.Steamer.getLongValue;
+import static net.guto.steamer.Steamer.getStringValue;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.xml.namespace.QName;
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.xpath.XPath;
-import javax.xml.xpath.XPathExpression;
-import javax.xml.xpath.XPathExpressionException;
-import javax.xml.xpath.XPathFactory;
 
 import org.w3c.dom.Document;
-import org.xml.sax.SAXException;
 
 public class SteamUser {
 
-	private enum Field {
+	private enum UserField implements Field {
 		STEAM_ID64("//profile/steamID64", STRING),
 		STEAM_ID("//profile/steamID", STRING),
 		AVATAR_ICON("//profile/avatarIcon", STRING),
@@ -30,12 +23,20 @@ public class SteamUser {
 		CUSTOM_URL("//profile/customURL", STRING),
 		LOCATION("//profile/location", STRING);
 
-		public final String xpath;
-		public final QName dataType;
+		private final String xpath;
+		private final QName dataType;
 
-		private Field(String xpath, QName dataType) {
+		private UserField(String xpath, QName dataType) {
 			this.xpath = xpath;
 			this.dataType = dataType;
+		}
+
+		public String getXPath() {
+			return xpath;
+		}
+
+		public QName getDataType() {
+			return dataType;
 		}
 	}
 
@@ -47,52 +48,14 @@ public class SteamUser {
 	}
 
 	protected void parseProfile() {
-		Document document = getDocument();
-		steamId64 = getLongValue(Field.STEAM_ID64, document);
-		steamID = getStringValue(Field.STEAM_ID, document);
-		avatarIcon = getStringValue(Field.AVATAR_ICON, document);
-		avatarMedium = getStringValue(Field.AVATAR_MEDIUM, document);
-		avatarFull = getStringValue(Field.AVATAR_FULL, document);
-		customUrl = getStringValue(Field.CUSTOM_URL, document);
-		location = getStringValue(Field.LOCATION, document);
-	}
-
-	private static Long getLongValue(final Field field, final Document document) {
-		return Long.parseLong((String) getValue(field, document));
-	}
-
-	private static String getStringValue(final Field field, final Document document) {
-		return (String) getValue(field, document);
-	}
-
-	private static Object getValue(final Field field, final Document document) {
-		try {
-			XPathFactory xpathFactory = XPathFactory.newInstance();
-			XPath xpath = xpathFactory.newXPath();
-			XPathExpression expression = xpath.compile(field.xpath);
-			return expression.evaluate(document, field.dataType);
-		} catch (XPathExpressionException e) {
-			e.printStackTrace();
-			return null;
-		}
-	}
-
-	private Document getDocument() {
-		try {
-			DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-			DocumentBuilder builder = factory.newDocumentBuilder();
-			Document document = builder.parse("src/test/resources/" + username + ".xml");
-			return document;
-		} catch (ParserConfigurationException e) {
-			e.printStackTrace();
-			return null;
-		} catch (SAXException e) {
-			e.printStackTrace();
-			return null;
-		} catch (IOException e) {
-			e.printStackTrace();
-			return null;
-		}
+		Document document = getDocument("src/test/resources/" + username + ".xml");
+		steamId64 = getLongValue(UserField.STEAM_ID64, document);
+		steamID = getStringValue(UserField.STEAM_ID, document);
+		avatarIcon = getStringValue(UserField.AVATAR_ICON, document);
+		avatarMedium = getStringValue(UserField.AVATAR_MEDIUM, document);
+		avatarFull = getStringValue(UserField.AVATAR_FULL, document);
+		customUrl = getStringValue(UserField.CUSTOM_URL, document);
+		location = getStringValue(UserField.LOCATION, document);
 	}
 
 	Long steamId64;

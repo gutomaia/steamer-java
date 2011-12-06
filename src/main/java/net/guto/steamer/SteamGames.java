@@ -56,6 +56,8 @@ public class SteamGames {
 			if ("game".equals(nodeName)) {
 				game = new SteamGame();
 				games.add(game);
+			} else if ("appID".equals(nodeName)) {
+				game.appID = Integer.parseInt(node.getTextContent());
 			}
 		}
 	}

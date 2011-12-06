@@ -2,8 +2,10 @@ package net.guto.steamer;
 
 public class SteamGame {
 
+	public int appID;
+
 	public int getAppID() {
-		return 440;
+		return appID;
 	}
 
 	public String getName() {

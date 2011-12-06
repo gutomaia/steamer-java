@@ -61,5 +61,8 @@ public class SteamTest extends TestCase {
 		assertEquals("589.7", Float.toString(game.getHoursOnRecord()));
 		assertEquals("http://steamcommunity.com/id/gutomaia/stats/TF2", game.getStatsLink());
 		assertEquals("http://steamcommunity.com/stats/TF2/achievements/", game.getGlobalStatsLink());
+		
+		game = games.get(1);
+		assertEquals(35010, game.getAppID());
 	}
 }

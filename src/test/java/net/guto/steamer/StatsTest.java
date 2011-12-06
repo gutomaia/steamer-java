@@ -28,5 +28,6 @@ public class StatsTest extends TestCase {
 				achievement.getIconClosed());
 		assertEquals("http://media.steampowered.com/steamcommunity/public/images/apps/550/1921292f1593086aa0dc7d29124e4c0c1119e084.jpg",
 				achievement.getIconOpen());
+		assertEquals("CRASS MENAGERIE", achievement.getName());
 	}
 }

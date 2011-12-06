@@ -73,6 +73,8 @@ public class StatsClient {
 					achievement.iconClosed = node.getTextContent();
 				}else if ("iconOpen".equals(nodeName)){
 					achievement.iconOpen = node.getTextContent();
+				}else if ("name".equals(nodeName)){
+					achievement.name = node.getTextContent();
 				}
 			}
 		}

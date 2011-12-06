@@ -4,6 +4,7 @@ public class Achievement {
 
 	public String iconClosed;
 	public String iconOpen;
+	public String name;
 
 	public String getIconClosed() {
 		return iconClosed;
@@ -14,7 +15,7 @@ public class Achievement {
 	}
 
 	public String getName() {
-		return "ACID REFLEX";
+		return name;
 	}
 
 	public String getApiname() {

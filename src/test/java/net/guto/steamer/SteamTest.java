@@ -9,5 +9,7 @@ public class SteamTest extends TestCase {
 		SteamUser gutomaia = steamer.getUser("gutomaia");
 		assertNotNull(gutomaia);
 		assertEquals("gutomaia", gutomaia.getSteamId());
+		assertEquals(76561197985077150l, gutomaia.getSteamId64(), 0l);
+		assertEquals("76561197985077150", gutomaia.getSteamId64().toString());
 	} 
 }

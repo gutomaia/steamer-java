@@ -41,6 +41,16 @@ public class StatsTest extends TestCase {
 		assertEquals("A RIDE DENIED", achievement.getName());
 		assertEquals("ach_save_player_from_jockey_fast", achievement.getApiname());
 		assertEquals("Kill a Jockey within 2 seconds of it jumping on a Survivor.", achievement.getDescription());
+		
+		achievement = achievements.get(3);
+
+		assertEquals("http://media.steampowered.com/steamcommunity/public/images/apps/550/4eb2b093ce1dd442da4a62c9a0659602fbfc0d1e.jpg",
+				achievement.getIconClosed());
+		assertEquals("http://media.steampowered.com/steamcommunity/public/images/apps/550/4fc103dcb52ccc748b5bdea66924d1bf5c9e0705.jpg",
+				achievement.getIconOpen());
+		assertEquals("ARMORY OF ONE", achievement.getName());
+		assertEquals("ach_deploy_ammo_upgrade", achievement.getApiname());
+		assertEquals("Deploy an ammo upgrade and have your team use it.", achievement.getDescription());
 
 	}
 }

@@ -2,12 +2,15 @@ package net.guto.steamer;
 
 public class Achievement {
 
+	public String iconClosed;
+	public String iconOpen;
+
 	public String getIconClosed() {
-		return "http://media.steampowered.com/steamcommunity/public/images/apps/550/8d94a8ffcb20fd11de547a6972bcef319fd93bf6.jpg";
+		return iconClosed;
 	}
 
 	public String getIconOpen() {
-		return "http://media.steampowered.com/steamcommunity/public/images/apps/550/19c4af0f9bb24b719a086cbd3b63961d8348bf2b.jpg";
+		return iconOpen;
 	}
 
 	public String getName() {

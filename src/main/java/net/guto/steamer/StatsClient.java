@@ -12,6 +12,7 @@ import java.util.List;
 import javax.xml.namespace.QName;
 
 import org.w3c.dom.Document;
+import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 public class StatsClient {
@@ -21,7 +22,7 @@ public class StatsClient {
 				"/playerstats/game/gameLink",
 				STRING), GAME_ICON("/playerstats/game/gameIcon", STRING), GAME_LOGO("/playerstats/game/gameLogo", STRING), GAME_LOGO_SMALL(
 				"/playerstats/game/gameLogoSmall",
-				STRING), ACHIEVEMENTS("/playerstats/achievements/achievement", NODESET)
+				STRING), ACHIEVEMENTS("/playerstats/achievements/achievement | /playerstats/achievements/achievement/*", NODESET)
 
 		;
 
@@ -60,9 +61,19 @@ public class StatsClient {
 		if (achievements == null) {
 			achievements = new ArrayList<Achievement>();
 			Document document = getDocument("src/test/resources/" + username + "-" + game + ".xml");
-			NodeList xml = getNodeListValue(StatsField.ACHIEVEMENTS, document);
-			for (int i = 0; i < xml.getLength(); i++) {
-				achievements.add(new Achievement());
+			NodeList nodes = getNodeListValue(StatsField.ACHIEVEMENTS, document);
+			Achievement achievement = null;
+			for (int i = 0; i < nodes.getLength(); i++) {
+				Node node = nodes.item(i);
+				String nodeName = node.getNodeName();
+				if ("achievement".equals(nodeName)) {
+					achievement = new Achievement();
+					achievements.add(achievement);
+				}else if ("iconClosed".equals(nodeName)){
+					achievement.iconClosed = node.getTextContent();
+				}else if ("iconOpen".equals(nodeName)){
+					achievement.iconOpen = node.getTextContent();
+				}
 			}
 		}
 		return achievements;

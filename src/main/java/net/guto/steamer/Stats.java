@@ -2,12 +2,15 @@ package net.guto.steamer;
 
 public class Stats {
 
+	public String gameFriendlyName;
+	public String gameName;
+
 	public String getGameFriendlyName() {
-		return "TF2";
+		return gameFriendlyName;
 	}
 
 	public String getGameName() {
-		return "Team Fortress 2";
+		return gameName;
 	}
 
 	public String getGameLink() {

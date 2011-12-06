@@ -25,7 +25,7 @@ public class SteamTest extends TestCase {
 		assertEquals("76561198029691735", gobli.getSteamId64().toString());
 		assertEquals("http://media.steampowered.com/steamcommunity/public/images/avatars/48/48fe321d0f0114062448151ea422656405420e0b.jpg", gobli.getAvatarIcon());
 		assertEquals("http://media.steampowered.com/steamcommunity/public/images/avatars/48/48fe321d0f0114062448151ea422656405420e0b_medium.jpg", gobli.getAvatarMedium());
-		assertEquals("http://media.steampowered.com/steamcommunity/public/images/avatars/56/566f5c7e9126864777b7d9d3cfe9f8e62e27f706_full.jpg", gobli.getAvatarFull());
+		assertEquals("http://media.steampowered.com/steamcommunity/public/images/avatars/48/48fe321d0f0114062448151ea422656405420e0b_full.jpg", gobli.getAvatarFull());
 	}
 
 }

@@ -2,11 +2,11 @@ package net.guto.steamer;
 
 public class Achievement {
 
-	public String iconClosed;
-	public String iconOpen;
-	public String name;
-	public String apiname;
-	public String description;
+	String iconClosed;
+	String iconOpen;
+	String name;
+	String apiname;
+	String description;
 
 	public String getIconClosed() {
 		return iconClosed;

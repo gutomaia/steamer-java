@@ -1,7 +1,6 @@
 package net.guto.steamer;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -13,6 +12,7 @@ import javax.xml.xpath.XPathExpressionException;
 import javax.xml.xpath.XPathFactory;
 
 import org.w3c.dom.Document;
+import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
 public class Steamer {
@@ -23,7 +23,8 @@ public class Steamer {
 	}
 
 	public List<SteamGame> getGames(String steamId) {
-		return new ArrayList<SteamGame>();
+		SteamGames steamGames = new SteamGames(steamId);
+		return steamGames.getGames();
 	}
 
 	protected static Long getLongValue(final Field field, final Document document) {
@@ -34,9 +35,14 @@ public class Steamer {
 		return (String) getValue(field, document);
 	}
 
+	protected static NodeList getNodeListValue(final Field field, final Document document) {
+		return (NodeList) getValue(field, document);
+	}
+
+	static XPathFactory xpathFactory = XPathFactory.newInstance();
+
 	protected static Object getValue(final Field field, final Document document) {
 		try {
-			XPathFactory xpathFactory = XPathFactory.newInstance();
 			XPath xpath = xpathFactory.newXPath();
 			XPathExpression expression = xpath.compile(field.getXPath());
 			return expression.evaluate(document, field.getDataType());
@@ -46,9 +52,10 @@ public class Steamer {
 		}
 	}
 
+	static DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+
 	protected static Document getDocument(final String xml) {
 		try {
-			DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 			DocumentBuilder builder = factory.newDocumentBuilder();
 			Document document = builder.parse(xml);
 			return document;

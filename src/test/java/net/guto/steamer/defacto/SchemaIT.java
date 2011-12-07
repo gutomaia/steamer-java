@@ -72,4 +72,31 @@ public class SchemaIT extends TestCase {
 			fail(e.getMessage());
 		}
 	}
+
+	public void testL4D2Schema() {
+		try {
+			DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+			DocumentBuilder parser = factory.newDocumentBuilder();
+
+			SchemaFactory sf = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
+			Source schemaFile = new StreamSource(new File("src/test/resources/schema/stats-l4d2.schema.xml"));
+			Schema schema = sf.newSchema(schemaFile);
+			Validator validator = schema.newValidator();
+
+			Document document = parser.parse(new File("src/test/resources/gutomaia-l4d2.xml"));
+			validator.validate(new DOMSource(document));
+			document = parser.parse("http://steamcommunity.com/id/gutomaia/stats/l4d2?xml=1");
+			validator.validate(new DOMSource(document));
+		} catch (ParserConfigurationException e) {
+			e.printStackTrace();
+			fail(e.getMessage());
+		} catch (SAXException e) {
+			e.printStackTrace();
+			fail(e.getMessage());
+		} catch (IOException e) {
+			e.printStackTrace();
+			fail(e.getMessage());
+		}
+	}
+
 }

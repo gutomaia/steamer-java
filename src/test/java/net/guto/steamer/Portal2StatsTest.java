@@ -50,4 +50,12 @@ public class Portal2StatsTest extends TestCase {
 				"http://media.steampowered.com/steamcommunity/public/images/apps/620/d2a1119ddc202fab81d9b87048f495cbd6377502_thumb.jpg",
 				stats.getGameLogoSmall());
 	}
+	
+	public void testPortal2PlayerSteamID64(){
+		assertEquals("76561197985077150",stats.getSteamID64().toString());
+	}
+	
+	public void testPortal2PlayerCustomURL(){
+		assertEquals("gutomaia",stats.getPlayerCustomURL());
+	}
 }

@@ -1,12 +1,11 @@
 package net.guto.steamer;
 
 import static net.guto.steamer.Steamer.getDocument;
+import junit.framework.TestCase;
 
 import org.w3c.dom.Document;
 
-import junit.framework.TestCase;
-
-public abstract class TF2StatsTest extends TestCase {
+public class TF2StatsTest extends TestCase {
 
 	Stats stats;
 
@@ -49,4 +48,13 @@ public abstract class TF2StatsTest extends TestCase {
 				"http://media.steampowered.com/steamcommunity/public/images/apps/440/07385eb55b5ba974aebbe74d3c99626bda7920b8_thumb.jpg",
 				stats.getGameLogoSmall());
 	}
+	
+	public void testTF2PlayerSteamID64(){
+		assertEquals("76561197985077150",stats.getSteamID64().toString());
+	}
+
+	public void testTF2PlayerCustomURL(){
+		assertEquals("gutomaia",stats.getPlayerCustomURL());
+	}
+
 }

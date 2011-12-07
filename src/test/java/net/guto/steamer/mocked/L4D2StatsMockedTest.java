@@ -29,7 +29,7 @@ import org.powermock.modules.junit4.PowerMockRunner;
 public class L4D2StatsMockedTest extends L4D2StatsTest {
 	
 	@Override
-	protected Stats execute(StatsClient client){
+	protected Stats executeGetStats(StatsClient client){
 		return client.getStats("gutomaia", "l4d2");
 	}
 

@@ -15,7 +15,7 @@ public class L4D2StatsIT extends L4D2StatsTest {
 	StatsServlet statsServlet;
 
 	@Override
-	protected Stats execute(StatsClient client) {
+	protected Stats executeGetStats(StatsClient client) {
 		return client.getStats("gutomaia", "l4d2");
 	}
 

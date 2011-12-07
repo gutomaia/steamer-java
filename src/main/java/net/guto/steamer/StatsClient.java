@@ -6,6 +6,7 @@ import static net.guto.steamer.Steamer.connect;
 import static net.guto.steamer.Steamer.getDocument;
 import static net.guto.steamer.Steamer.getNodeListValue;
 import static net.guto.steamer.Steamer.getStringValue;
+import static net.guto.steamer.Steamer.*;
 
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -24,6 +25,8 @@ public class StatsClient {
 				"/playerstats/game/gameLink",
 				STRING), GAME_ICON("/playerstats/game/gameIcon", STRING), GAME_LOGO("/playerstats/game/gameLogo", STRING), GAME_LOGO_SMALL(
 				"/playerstats/game/gameLogoSmall",
+				STRING), PLAYER_STEAM_ID64("playerstats/player/steamID64", STRING), PLAYER_CUSTOM_URL(
+				"/playerstats/player/customURL",
 				STRING), ACHIEVEMENTS("/playerstats/achievements/achievement | /playerstats/achievements/achievement/*", NODESET);
 
 		private final String xpath;
@@ -42,14 +45,14 @@ public class StatsClient {
 			return dataType;
 		}
 	}
-	
-	public Stats  getStats(String username, String game) {
+
+	public Stats getStats(String username, String game) {
 		return getStats(username, game, null);
 	}
 
 	protected Stats getStats(String username, String game, Document document) {
-		if (document == null){
-			InputStream in = connect("http://localhost:8080/id/"+username+"/stats/"+game+"?xml=1");
+		if (document == null) {
+			InputStream in = connect("http://localhost:8080/id/" + username + "/stats/" + game + "?xml=1");
 			document = getDocument(in);
 		}
 		Stats stats = new Stats();
@@ -59,18 +62,25 @@ public class StatsClient {
 		stats.gameIcon = getStringValue(StatsField.GAME_ICON, document);
 		stats.gameLogo = getStringValue(StatsField.GAME_LOGO, document);
 		stats.gameLogoSmall = getStringValue(StatsField.GAME_LOGO_SMALL, document);
+		stats.playerCustomURL = getStringValue(StatsField.PLAYER_CUSTOM_URL, document);
+		stats.steamID64 = getLongValue(StatsField.PLAYER_STEAM_ID64, document);
 		return stats;
 	}
 
 	List<Achievement> achievements;
 
-	public List<Achievement> getAchievements(String username, String game) {
-		if (achievements == null) {
-			achievements = new ArrayList<Achievement>();
-			InputStream in = connect("http://localhost:8080/id/"+username+"/stats/"+game+"?xml=1");
-			Document document = getDocument(in);
-			NodeList nodes = getNodeListValue(StatsField.ACHIEVEMENTS, document);
+	protected List<Achievement> getAchievements(String username, String game) {
+		return getAchievements(username, game, null);
+	}
 
+	protected List<Achievement> getAchievements(String username, String game, Document document) {
+		if (achievements == null) {
+			if (document == null) {
+				InputStream in = connect("http://localhost:8080/id/" + username + "/stats/" + game + "?xml=1");
+				document = getDocument(in);
+			}
+			NodeList nodes = getNodeListValue(StatsField.ACHIEVEMENTS, document);
+			achievements = new ArrayList<Achievement>();
 			Achievement achievement = null;
 			for (int i = 0; i < nodes.getLength(); i++) {
 				Node node = nodes.item(i);

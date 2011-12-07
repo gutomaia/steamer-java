@@ -8,6 +8,8 @@ public class Stats {
 	String gameIcon;
 	String gameLogo;
 	String gameLogoSmall;
+	Long steamID64;
+	String playerCustomURL;
 
 	public String getGameFriendlyName() {
 		return gameFriendlyName;
@@ -31,5 +33,17 @@ public class Stats {
 
 	public String getGameLogoSmall() {
 		return gameLogoSmall;
+	}
+
+	public Long getSteamID64() {
+		return steamID64;
+	}
+
+	public String getPlayerCustomURL() {
+		return playerCustomURL;
+	}
+
+	public Float getStatsHoursPlayerd() {
+		return 0f;
 	}
 }

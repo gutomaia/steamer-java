@@ -2,6 +2,8 @@ package net.guto.steamer;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.List;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -12,6 +14,11 @@ import javax.xml.xpath.XPathExpression;
 import javax.xml.xpath.XPathExpressionException;
 import javax.xml.xpath.XPathFactory;
 
+import org.apache.http.HttpResponse;
+import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.DefaultHttpClient;
 import org.w3c.dom.Document;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
@@ -53,10 +60,9 @@ public class Steamer {
 		}
 	}
 
-	static DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-
 	protected static Document getDocument(final String xml) {
 		try {
+			DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 			DocumentBuilder builder = factory.newDocumentBuilder();
 			Document document = builder.parse(xml);
 			return document;
@@ -73,7 +79,9 @@ public class Steamer {
 	}
 	protected static Document getDocument(final InputStream in) {
 		try {
+			DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 			DocumentBuilder builder = factory.newDocumentBuilder();
+			System.out.println(in);
 			Document document = builder.parse(in);
 			return document;
 		} catch (ParserConfigurationException e) {
@@ -87,5 +95,31 @@ public class Steamer {
 			return null;
 		}
 	}
-
+	
+	public static HttpClient client;
+	
+	protected static HttpClient getHttpClient(){
+		if (client == null){
+			client = new DefaultHttpClient();
+		}
+		return client;
+	}
+	
+	protected static InputStream connect(String url) {
+		try {
+			HttpClient client = getHttpClient();
+			HttpGet request = new HttpGet();
+			// http://steamcommunity.com/
+			request.setURI(new URI(url));
+			HttpResponse response = client.execute(request);
+			return response.getEntity().getContent();
+		} catch (URISyntaxException e) {
+			e.printStackTrace();
+		} catch (ClientProtocolException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
 }

@@ -10,6 +10,33 @@
   <name>steamer</name>
   <url>http://gutomaia.net/steamer-java</url>
 
+  <licenses>
+    <license>
+      <name>BSD license</name>
+      <url>http://www.opensource.org/licenses/bsd-license.php</url>
+    </license>
+  </licenses>
+
+  <scm>
+    <url>http://github.com/gutomaia/steamer</url>
+    <connection>scm:git:git://github.com/gutomaia/steamer.git</connection>
+    <developerConnection>scm:git:git@github.com:gutomaia/steamer.git</developerConnection>
+  </scm>
+
+  <prerequisites>
+    <maven>3.0.3</maven>
+  </prerequisites>
+
+  <developers>
+    <developer>
+      <id>gutomaia</id>
+      <name>Gustavo Maia Neto (Guto Maia)</name>
+      <email>guto@guto.net</email>
+      <timezone>-3</timezone>
+    </developer>
+  </developers>
+
+
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <org.eclipse.jetty-version>8.0.4.v20111024</org.eclipse.jetty-version>
@@ -28,6 +55,54 @@
           <target>1.6</target>
         </configuration>
       </plugin>
+
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>2.7.1</version>
+        <configuration>
+          <skip>true</skip>
+          <useFile>true</useFile>
+          <trimStackTrace>true</trimStackTrace>
+        </configuration>
+        <executions>
+          <execution>
+            <id>unit-tests</id>
+            <phase>test</phase>
+            <goals>
+              <goal>test</goal>
+            </goals>
+            <configuration>
+              <skip>false</skip>
+              <includes>
+                <include>**/*Tests.java</include>
+                <include>**/*Test.java</include>
+              </includes>
+              <excludes>
+                <exclude>**/*IntegrationTests.java</exclude>
+                <exclude>**/*IT.java</exclude>
+                <exclude>**/*MockedTest.java</exclude>
+              </excludes>
+            </configuration>
+          </execution>
+          <execution>
+            <id>integration-tests</id>
+            <phase>integration-test</phase>
+            <goals>
+              <goal>test</goal>
+            </goals>
+            <configuration>
+              <skip>false</skip>
+              <includes>
+                <include>**/*IntegrationTests.java</include>
+                <include>**/*IT.java</include>
+                <include>**/*MockedTest.java</include>
+              </includes>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
     </plugins>
   </build>
 
@@ -42,6 +117,30 @@
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
       <version>4.8.2</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.mockito</groupId>
+      <artifactId>mockito-all</artifactId>
+      <version>1.8.5</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.powermock</groupId>
+      <artifactId>powermock-module-junit4</artifactId>
+      <version>1.4.10</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.powermock</groupId>
+      <artifactId>powermock-api-mockito</artifactId>
+      <version>1.4.10</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>xerces</groupId>
+      <artifactId>xerces</artifactId>
+      <version>2.4.0</version>
       <scope>test</scope>
     </dependency>
     <dependency>
@@ -70,6 +169,3 @@
     </dependency>
   </dependencies>
 </project>
-
-
-

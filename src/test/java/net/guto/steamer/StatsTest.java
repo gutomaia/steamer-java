@@ -2,11 +2,13 @@ package net.guto.steamer;
 
 import java.util.List;
 
+import junit.framework.TestCase;
+
+import net.guto.steamer.integration.StatsServlet;
+
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.servlet.ServletHolder;
 import org.eclipse.jetty.webapp.WebAppContext;
-
-import junit.framework.TestCase;
 
 public class StatsTest extends TestCase {
 

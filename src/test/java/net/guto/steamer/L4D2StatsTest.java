@@ -2,14 +2,23 @@ package net.guto.steamer;
 
 import junit.framework.TestCase;
 
+import org.w3c.dom.Document;
+
+import static net.guto.steamer.Steamer.getDocument;
+
 public class L4D2StatsTest extends TestCase {
 
 	Stats stats;
 
+	protected Stats execute(StatsClient client) {
+		Document document = getDocument("src/test/resources/gutomaia-l4d2.xml");
+		return client.getStats("gutomaia", "l4d2", document);
+	}
+
 	@Override
 	protected void setUp() throws Exception {
 		StatsClient client = new StatsClient();
-		stats = client.getStats("gutomaia", "l4d2");
+		stats = execute(client);
 		assertNotNull(stats);
 	}
 
@@ -28,7 +37,6 @@ public class L4D2StatsTest extends TestCase {
 	public void testL4D2GameIcon() {
 		assertEquals("http://media.steampowered.com/steamcommunity/public/images/apps/550/7d5a243f9500d2f8467312822f8af2a2928777ed.jpg",
 				stats.getGameIcon());
-
 	}
 
 	public void testL4D2Logo() {

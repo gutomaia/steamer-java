@@ -1,15 +1,24 @@
 package net.guto.steamer;
 
+import static net.guto.steamer.Steamer.getDocument;
+
+import org.w3c.dom.Document;
+
 import junit.framework.TestCase;
 
-public class TF2StatsTest extends TestCase {
+public abstract class TF2StatsTest extends TestCase {
 
 	Stats stats;
+
+	protected Stats execute(StatsClient client) {
+		Document document = getDocument("src/test/resources/gutomaia-tf2.xml");
+		return client.getStats("gutomaia", "tf2", document);
+	}
 
 	@Override
 	protected void setUp() throws Exception {
 		StatsClient client = new StatsClient();
-		stats = client.getStats("gutomaia", "tf2");
+		stats = execute(client);
 		assertNotNull(stats);
 	}
 

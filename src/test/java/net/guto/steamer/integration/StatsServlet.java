@@ -1,4 +1,4 @@
-package net.guto.steamer;
+package net.guto.steamer.integration;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -13,15 +13,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 public class StatsServlet extends HttpServlet {
-	
+
 	private static final long serialVersionUID = 8309217551078307997L;
-	
+
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		counter++;
 		requestURI = req.getRequestURI();
 		String xml = req.getParameter("xml");
-		System.out.println(xml);
 		if (xml != null && Pattern.matches("^/id/([a-zA-Z0-9]+)/stats/([a-zA-Z0-9]+)$", requestURI)) {
 			Pattern pattern = Pattern.compile("^/id/([a-zA-Z0-9]+)/stats/([a-zA-Z0-9]+)$");
 			Matcher m = pattern.matcher(requestURI);
@@ -35,11 +34,11 @@ public class StatsServlet extends HttpServlet {
 			while ((count = in.read(buf)) >= 0) {
 				out.write(buf, 0, count);
 			}
-            out.flush();
+			out.flush();
 			in.close();
 			out.close();
 		} else {
-			// SET RESPONSE 404
+			resp.setStatus(404);
 		}
 	}
 

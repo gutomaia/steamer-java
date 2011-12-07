@@ -1,15 +1,24 @@
 package net.guto.steamer;
 
+import static net.guto.steamer.Steamer.getDocument;
+
+import org.w3c.dom.Document;
+
 import junit.framework.TestCase;
 
 public class Portal2StatsTest extends TestCase {
 
 	Stats stats;
 
+	protected Stats execute(StatsClient client) {
+		Document document = getDocument("src/test/resources/gutomaia-portal2.xml");
+		return client.getStats("gutomaia", "portal2", document);
+	}
+
 	@Override
 	protected void setUp() throws Exception {
 		StatsClient client = new StatsClient();
-		stats = client.getStats("gutomaia", "portal2");
+		stats = execute(client);
 		assertNotNull(stats);
 	}
 

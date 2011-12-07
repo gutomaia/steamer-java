@@ -1,6 +1,7 @@
 package net.guto.steamer;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -58,6 +59,22 @@ public class Steamer {
 		try {
 			DocumentBuilder builder = factory.newDocumentBuilder();
 			Document document = builder.parse(xml);
+			return document;
+		} catch (ParserConfigurationException e) {
+			e.printStackTrace();
+			return null;
+		} catch (SAXException e) {
+			e.printStackTrace();
+			return null;
+		} catch (IOException e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+	protected static Document getDocument(final InputStream in) {
+		try {
+			DocumentBuilder builder = factory.newDocumentBuilder();
+			Document document = builder.parse(in);
 			return document;
 		} catch (ParserConfigurationException e) {
 			e.printStackTrace();

@@ -64,12 +64,16 @@ public class L4D2StatsTest extends TestCase {
 	public void testL4D2StatsHoursPlayed(){
 		assertEquals("0.0", stats.getStatsHoursPlayerd().toString());
 	}
+
+	protected List<Achievement> executeGetAchievements(StatsClient client) {
+		Document document = getDocument("src/test/resources/gutomaia-l4d2.xml");
+		return client.getAchievements("gutomaia", "L4D2", document);
+	}
+
 	
 	public void testAchievements() {
-		Document document = getDocument("src/test/resources/gutomaia-l4d2.xml");
-
 		StatsClient client = new StatsClient();
-		List<Achievement> achievements = client.getAchievements("gutomaia", "L4D2", document);
+		List<Achievement> achievements = executeGetAchievements(client);
 
 		assertNotNull(achievements);
 		assertEquals(67, achievements.size());

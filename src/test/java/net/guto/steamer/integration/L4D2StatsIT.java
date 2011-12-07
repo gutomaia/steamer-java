@@ -1,5 +1,8 @@
 package net.guto.steamer.integration;
 
+import java.util.List;
+
+import net.guto.steamer.Achievement;
 import net.guto.steamer.L4D2StatsTest;
 import net.guto.steamer.Stats;
 import net.guto.steamer.StatsClient;
@@ -17,6 +20,11 @@ public class L4D2StatsIT extends L4D2StatsTest {
 	@Override
 	protected Stats executeGetStats(StatsClient client) {
 		return client.getStats("gutomaia", "l4d2");
+	}
+
+	@Override
+	protected List<Achievement> executeGetAchievements(StatsClient client) {
+		return client.getAchievements("gutomaia", "L4D2");
 	}
 
 	@Override

@@ -69,7 +69,7 @@ public class StatsClient {
 
 	List<Achievement> achievements;
 
-	protected List<Achievement> getAchievements(String username, String game) {
+	public List<Achievement> getAchievements(String username, String game) {
 		return getAchievements(username, game, null);
 	}
 

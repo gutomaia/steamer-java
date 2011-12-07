@@ -7,10 +7,12 @@ import static org.powermock.api.mockito.PowerMockito.mockStatic;
 import static org.powermock.api.mockito.PowerMockito.whenNew;
 
 import java.io.InputStream;
+import java.util.List;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
+import net.guto.steamer.Achievement;
 import net.guto.steamer.L4D2StatsTest;
 import net.guto.steamer.Stats;
 import net.guto.steamer.StatsClient;
@@ -33,6 +35,10 @@ public class L4D2StatsMockedTest extends L4D2StatsTest {
 		return client.getStats("gutomaia", "l4d2");
 	}
 
+	@Override
+	protected List<Achievement> executeGetAchievements(StatsClient client) {
+		return client.getAchievements("gutomaia", "L4D2");
+	}
 
 	@Override
 	public void setUp() throws Exception {

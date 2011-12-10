@@ -51,13 +51,10 @@ public class Steamer {
 		return (NodeList) getValue(field, document);
 	}
 
-	static XPathFactory xpathFactory = XPathFactory.newInstance();
 
 	private static Object getValue(final Field field, final Document document) {
 		try {
-			XPath xpath = xpathFactory.newXPath();
-			XPathExpression expression = xpath.compile(field.getXPath());
-			return expression.evaluate(document, field.getDataType());
+			return field.getXPath().evaluate(document, field.getDataType());
 		} catch (XPathExpressionException e) {
 			e.printStackTrace();
 			return null;

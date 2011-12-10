@@ -1,8 +1,10 @@
 package net.guto.steamer;
 
 import javax.xml.namespace.QName;
+import javax.xml.xpath.XPathExpression;
 
 public interface Field {
-	String getXPath();
+	XPathExpression getXPath();
+	String getXPathString();
 	QName getDataType();
 }

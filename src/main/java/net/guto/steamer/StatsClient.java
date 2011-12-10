@@ -14,6 +14,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.xml.namespace.QName;
+import javax.xml.xpath.XPath;
+import javax.xml.xpath.XPathExpression;
+import javax.xml.xpath.XPathExpressionException;
+import javax.xml.xpath.XPathFactory;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
@@ -31,20 +35,32 @@ public class StatsClient {
 				"/playerstats/player/customURL",
 				STRING), ACHIEVEMENTS("/playerstats/achievements/achievement | /playerstats/achievements/achievement/*", NODESET);
 
-		private final String xpath;
+		private XPathExpression xpath;
+		private final String xpathString;
 		private final QName dataType;
 
-		private StatsField(String xpath, QName dataType) {
-			this.xpath = xpath;
+		private StatsField(String xpathString, QName dataType) {
+			this.xpathString = xpathString;
 			this.dataType = dataType;
+			XPathFactory xpathFactory = XPathFactory.newInstance();
+			try {
+				xpath = xpathFactory.newXPath().compile(xpathString);
+			} catch (XPathExpressionException e) {
+				e.printStackTrace();
+			}
 		}
 
-		public String getXPath() {
-			return xpath;
+		public String getXPathString() {
+			return xpathString;
 		}
 
 		public QName getDataType() {
 			return dataType;
+		}
+
+		@Override
+		public XPathExpression getXPath() {
+			return xpath;
 		}
 	}
 

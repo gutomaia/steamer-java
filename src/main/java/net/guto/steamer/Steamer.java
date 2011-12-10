@@ -35,6 +35,10 @@ public class Steamer {
 		return steamGames.getGames();
 	}
 
+	protected static Integer getIntValue(final Field field, final Document document) {
+		return Integer.parseInt((String) getValue(field, document));
+	}
+	
 	protected static Long getLongValue(final Field field, final Document document) {
 		return Long.parseLong((String) getValue(field, document));
 	}
@@ -49,7 +53,7 @@ public class Steamer {
 
 	static XPathFactory xpathFactory = XPathFactory.newInstance();
 
-	protected static Object getValue(final Field field, final Document document) {
+	private static Object getValue(final Field field, final Document document) {
 		try {
 			XPath xpath = xpathFactory.newXPath();
 			XPathExpression expression = xpath.compile(field.getXPath());
@@ -77,6 +81,7 @@ public class Steamer {
 			return null;
 		}
 	}
+
 	protected static Document getDocument(final InputStream in) {
 		try {
 			DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
@@ -95,21 +100,23 @@ public class Steamer {
 			return null;
 		}
 	}
-	
+
 	public static HttpClient client;
-	
-	protected static HttpClient getHttpClient(){
-		if (client == null){
+
+	protected static HttpClient getHttpClient() {
+		if (client == null) {
 			client = new DefaultHttpClient();
 		}
 		return client;
 	}
-	
+
+	public static String steamcommunity = "steamcommunity.com";
+	public static String mediasteampowered = "media.steampowered.com";
+
 	protected static InputStream connect(String url) {
 		try {
 			HttpClient client = getHttpClient();
 			HttpGet request = new HttpGet();
-			// http://steamcommunity.com/
 			request.setURI(new URI(url));
 			HttpResponse response = client.execute(request);
 			return response.getEntity().getContent();

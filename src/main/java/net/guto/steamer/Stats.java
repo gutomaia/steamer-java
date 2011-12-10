@@ -10,6 +10,7 @@ public class Stats {
 	String gameLogoSmall;
 	Long steamID64;
 	String playerCustomURL;
+	int visibilityState;
 
 	public String getGameFriendlyName() {
 		return gameFriendlyName;
@@ -45,5 +46,9 @@ public class Stats {
 
 	public Float getStatsHoursPlayerd() {
 		return 0f;
+	}
+
+	public int getVisibilityState() {
+		return visibilityState;
 	}
 }

@@ -23,6 +23,10 @@ public class L4D2StatsTest extends TestCase {
 		stats = executeGetStats(client);
 		assertNotNull(stats);
 	}
+	
+	public void testL4D2getVisibilityState(){
+		assertEquals(3, stats.getVisibilityState());		
+	}
 
 	public void testL4D2GameFriendlyName() {
 		assertEquals("L4D2", stats.getGameFriendlyName());

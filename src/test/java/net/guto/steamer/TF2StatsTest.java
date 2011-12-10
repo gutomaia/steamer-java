@@ -21,6 +21,10 @@ public class TF2StatsTest extends TestCase {
 		assertNotNull(stats);
 	}
 
+	public void testTF2getVisibilityState(){
+		assertEquals(3, stats.getVisibilityState());		
+	}
+	
 	public void testTF2GameFriendlyName() {
 		assertEquals("TF2", stats.getGameFriendlyName());
 	}

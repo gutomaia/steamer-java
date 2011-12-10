@@ -21,6 +21,10 @@ public class Portal2StatsTest extends TestCase {
 		stats = execute(client);
 		assertNotNull(stats);
 	}
+	
+	public void testPortal2getVisibilityState(){
+		assertEquals(3, stats.getVisibilityState());		
+	}
 
 	public void testPortal2GameFriendlyName() {
 		assertEquals("Portal2", stats.getGameFriendlyName());

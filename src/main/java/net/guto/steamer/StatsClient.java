@@ -4,9 +4,10 @@ import static javax.xml.xpath.XPathConstants.NODESET;
 import static javax.xml.xpath.XPathConstants.STRING;
 import static net.guto.steamer.Steamer.connect;
 import static net.guto.steamer.Steamer.getDocument;
+import static net.guto.steamer.Steamer.getIntValue;
+import static net.guto.steamer.Steamer.getLongValue;
 import static net.guto.steamer.Steamer.getNodeListValue;
 import static net.guto.steamer.Steamer.getStringValue;
-import static net.guto.steamer.Steamer.*;
 
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -21,6 +22,7 @@ import org.w3c.dom.NodeList;
 public class StatsClient {
 
 	private static enum StatsField implements Field {
+		VISIBILITY_STATE("/playerstats/visibilityState", STRING),
 		GAME_FRIENDLY_NAME("/playerstats/game/gameFriendlyName", STRING), GAME_NAME("/playerstats/game/gameName", STRING), GAME_LINK(
 				"/playerstats/game/gameLink",
 				STRING), GAME_ICON("/playerstats/game/gameIcon", STRING), GAME_LOGO("/playerstats/game/gameLogo", STRING), GAME_LOGO_SMALL(
@@ -52,10 +54,11 @@ public class StatsClient {
 
 	protected Stats getStats(String username, String game, Document document) {
 		if (document == null) {
-			InputStream in = connect("http://localhost:8080/id/" + username + "/stats/" + game + "?xml=1");
+			InputStream in = connect("http://"+Steamer.steamcommunity+"/id/" + username + "/stats/" + game + "?xml=1");
 			document = getDocument(in);
 		}
 		Stats stats = new Stats();
+		stats.visibilityState = getIntValue(StatsField.VISIBILITY_STATE, document);
 		stats.gameFriendlyName = getStringValue(StatsField.GAME_FRIENDLY_NAME, document);
 		stats.gameName = getStringValue(StatsField.GAME_NAME, document);
 		stats.gameLink = getStringValue(StatsField.GAME_LINK, document);
@@ -76,7 +79,7 @@ public class StatsClient {
 	protected List<Achievement> getAchievements(String username, String game, Document document) {
 		if (achievements == null) {
 			if (document == null) {
-				InputStream in = connect("http://localhost:8080/id/" + username + "/stats/" + game + "?xml=1");
+				InputStream in = connect("http://"+Steamer.steamcommunity+"/id/" + username + "/stats/" + game + "?xml=1");
 				document = getDocument(in);
 			}
 			NodeList nodes = getNodeListValue(StatsField.ACHIEVEMENTS, document);

@@ -1,5 +1,7 @@
 package net.guto.steamer;
 
+import java.util.Date;
+
 public class Achievement {
 
 	String iconClosed;
@@ -7,6 +9,7 @@ public class Achievement {
 	String name;
 	String apiname;
 	String description;
+	Date timestamp;
 
 	public String getIconClosed() {
 		return iconClosed;
@@ -26,5 +29,13 @@ public class Achievement {
 
 	public String getDescription() {
 		return description;
+	}
+
+	public Date getTimestamp() {
+		return timestamp;
+	}
+	
+	boolean isAchieved(){
+		return timestamp != null;
 	}
 }

@@ -6,6 +6,7 @@ import net.guto.steamer.Achievement;
 import net.guto.steamer.L4D2StatsTest;
 import net.guto.steamer.Stats;
 import net.guto.steamer.StatsClient;
+import net.guto.steamer.Steamer;
 
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.servlet.ServletHolder;
@@ -41,6 +42,7 @@ public class L4D2StatsIT extends L4D2StatsTest {
 			server.setStopAtShutdown(false);
 			server.setHandler(fakeSteam);
 			server.start();
+			Steamer.steamcommunity = "localhost:"+port;
 		} catch (Exception e) {
 			server = null;
 			fail("Failing while stating server");

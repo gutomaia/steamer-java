@@ -11,6 +11,7 @@ import static net.guto.steamer.Steamer.getStringValue;
 
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.xml.namespace.QName;
@@ -116,6 +117,8 @@ public class StatsClient {
 					achievement.apiname = node.getTextContent();
 				} else if ("description".equals(nodeName)) {
 					achievement.description = node.getTextContent();
+				} else if ("unlockTimestamp".equals(nodeName)){
+					achievement.timestamp = new Date( Long.parseLong(node.getTextContent()) * 1000);
 				}
 			}
 		}

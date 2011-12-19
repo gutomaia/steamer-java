@@ -3,6 +3,7 @@ package net.guto.steamer.integration;
 import net.guto.steamer.Portal2StatsTest;
 import net.guto.steamer.Stats;
 import net.guto.steamer.StatsClient;
+import net.guto.steamer.Steamer;
 
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.servlet.ServletHolder;
@@ -33,6 +34,7 @@ public class Portal2StatsIT extends Portal2StatsTest {
 			server.setStopAtShutdown(false);
 			server.setHandler(fakeSteam);
 			server.start();
+			Steamer.steamcommunity = "localhost:"+port;
 		} catch (Exception e) {
 			server = null;
 			fail("Failing while stating server");

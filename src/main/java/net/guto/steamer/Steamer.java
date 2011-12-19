@@ -107,6 +107,7 @@ public class Steamer {
 	public static String steamcommunity = "steamcommunity.com";
 	public static String mediasteampowered = "media.steampowered.com";
 
+	//TODO: treate connection errors
 	protected static InputStream connect(String url) {
 		try {
 			HttpClient client = getHttpClient();

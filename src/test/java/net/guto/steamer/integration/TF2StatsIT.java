@@ -4,6 +4,7 @@ import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.servlet.ServletHolder;
 import org.eclipse.jetty.webapp.WebAppContext;
 
+import net.guto.steamer.Steamer;
 import net.guto.steamer.TF2StatsTest;
 
 public class TF2StatsIT extends TF2StatsTest {
@@ -25,6 +26,7 @@ public class TF2StatsIT extends TF2StatsTest {
 			server.setStopAtShutdown(false);
 			server.setHandler(fakeSteam);
 			server.start();
+			Steamer.steamcommunity = "localhost:"+port;
 		} catch (Exception e) {
 			server = null;
 			fail("Failing while stating server");

@@ -91,7 +91,10 @@ public class L4D2StatsTest extends TestCase {
 		assertEquals("ACID REFLEX", achievement.getName());
 		assertEquals("ach_kill_spitter_fast", achievement.getApiname());
 		assertEquals("Kill a Spitter before she is able to spit.", achievement.getDescription());
-
+		assertNotNull(achievement.getTimestamp());
+		assertEquals("1292701736000", Long.toString(achievement.getTimestamp().getTime()));
+		assertTrue(achievement.isAchieved());
+		
 		achievement = achievements.get(1);
 
 		assertEquals("http://media.steampowered.com/steamcommunity/public/images/apps/550/b1b772b233b812fd410aee1f175f8b1cb4fe4e43.jpg",
@@ -101,6 +104,8 @@ public class L4D2StatsTest extends TestCase {
 		assertEquals("CRASS MENAGERIE", achievement.getName());
 		assertEquals("ach_kill_every_uncommon_infected", achievement.getApiname());
 		assertEquals("Kill one of each Uncommon Infected.", achievement.getDescription());
+		assertEquals("1292451219000", Long.toString(achievement.getTimestamp().getTime()));
+		assertTrue(achievement.isAchieved());
 
 		achievement = achievements.get(2);
 

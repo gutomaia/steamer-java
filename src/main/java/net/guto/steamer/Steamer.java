@@ -80,7 +80,6 @@ public class Steamer {
 		try {
 			DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 			DocumentBuilder builder = factory.newDocumentBuilder();
-			System.out.println(in);
 			Document document = builder.parse(in);
 			return document;
 		} catch (ParserConfigurationException e) {

@@ -67,6 +67,8 @@ public class StatsClient {
 	public Stats getStats(String username, String game) {
 		return getStats(username, game, null);
 	}
+	
+	
 
 	protected Stats getStats(String username, String game, Document document) {
 		if (document == null) {

@@ -35,7 +35,7 @@ public class Achievement {
 		return timestamp;
 	}
 	
-	boolean isAchieved(){
+	public boolean isAchieved(){
 		return timestamp != null;
 	}
 }

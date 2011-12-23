@@ -4,11 +4,13 @@ import java.util.Date;
 
 public class Achievement {
 
+	boolean achieved = false;
 	String iconClosed;
 	String iconOpen;
 	String name;
 	String apiname;
 	String description;
+	
 	Date timestamp;
 
 	public String getIconClosed() {
@@ -36,6 +38,6 @@ public class Achievement {
 	}
 	
 	public boolean isAchieved(){
-		return timestamp != null;
+		return achieved;
 	}
 }

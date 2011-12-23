@@ -19,7 +19,9 @@ import javax.xml.xpath.XPathExpression;
 import javax.xml.xpath.XPathExpressionException;
 import javax.xml.xpath.XPathFactory;
 
+import org.w3c.dom.Attr;
 import org.w3c.dom.Document;
+import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
@@ -109,6 +111,9 @@ public class StatsClient {
 				if ("achievement".equals(nodeName)) {
 					achievement = new Achievement();
 					achievements.add(achievement);
+					NamedNodeMap attrs = node.getAttributes();
+					Attr attribute = (Attr) attrs.getNamedItem("closed");
+					achievement.achieved =attribute.getValue().equals("1"); 
 				} else if ("iconClosed".equals(nodeName)) {
 					achievement.iconClosed = node.getTextContent();
 				} else if ("iconOpen".equals(nodeName)) {

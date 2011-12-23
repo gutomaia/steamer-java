@@ -62,7 +62,7 @@ public class TF2StatsAchievementTest extends TestCase {
 
 	public void testHeadOfTheClassIsAchieved() {
 		Achievement achievement = achievements.get(0);
-		assertFalse(achievement.isAchieved());
+		assertTrue(achievement.isAchieved());
 	}
 	
 	public void testWorldTravelerIconClosed() {
@@ -99,7 +99,7 @@ public class TF2StatsAchievementTest extends TestCase {
 
 	public void testWorldTravelerIsAchieved() {
 		Achievement achievement = achievements.get(1);
-		assertFalse(achievement.isAchieved());
+		assertTrue(achievement.isAchieved());
 	}
 
 	public void testTeamDoctorIconClosed() {

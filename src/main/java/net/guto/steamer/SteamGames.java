@@ -1,10 +1,9 @@
 package net.guto.steamer;
 
-import static javax.xml.xpath.XPathConstants.STRING;
 import static javax.xml.xpath.XPathConstants.NODESET;
-
+import static javax.xml.xpath.XPathConstants.STRING;
+import static net.guto.steamer.Steamer.getDocument;
 import static net.guto.steamer.Steamer.getNodeListValue;
-import static net.guto.steamer.Steamer.*;
 
 import java.util.ArrayList;
 import java.util.List;

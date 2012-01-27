@@ -14,7 +14,7 @@ import org.eclipse.jetty.webapp.WebAppContext;
 
 public class L4D2StatsIT extends L4D2StatsTest {
 
-	public final int port = 8080;
+	public final int port = 9091;
 	Server server;
 	StatsServlet statsServlet;
 

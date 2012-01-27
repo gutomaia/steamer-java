@@ -8,7 +8,7 @@ import net.guto.steamer.Steamer;
 import net.guto.steamer.TF2StatsTest;
 
 public class TF2StatsIT extends TF2StatsTest {
-	public final int port = 8080;
+	public final int port = 9091;
 	Server server;
 	StatsServlet statsServlet;
 

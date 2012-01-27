@@ -11,7 +11,7 @@ import org.eclipse.jetty.webapp.WebAppContext;
 
 public class Portal2StatsIT extends Portal2StatsTest {
 
-	public final int port = 8080;
+	public final int port = 9091;
 	Server server;
 	StatsServlet statsServlet;
 
